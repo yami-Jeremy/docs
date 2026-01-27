@@ -1,0 +1,622 @@
+{
+    "接口名称": "getItemInfoAllV3",
+    "接口路径": "/items/getItemInfoAllV3",
+    "返回值说明": {
+      "itemInfo": {
+        "goods_id": "Integer // 商品ID",
+        "item_number": "String // 商品编号",
+        "item_type": "Integer // 商品类型",
+        "business_type": "Integer // 业务类型",
+        "new_arrival": "String // 新品标识",
+        "quality": "String // 品质标识",
+        "hot": "String // 热门标识",
+        "goods_number": "Integer // 库存数量",
+        "weekly_qty": "String // 周销量",
+        "weekly_qty_sign": "String // 周销量标识",
+        "stock_warning": "Integer // 低库存提醒阈值",
+        "goods_disclaimer": "String // 免责声明",
+        "is_district": "String // 是否区域限购",
+        "is_favorite": "Integer // 是否收藏",
+        "giftcard_item": "String // 礼品卡商品标识",
+        "slug": "String // 商品URL别名",
+        "item_title": "String // 商品标题",
+        "line_description": "String // 商品副标题/一行描述",
+        "selling_point": "String // 卖点",
+        "images": "List<String> // 商品图片列表",
+        "detail_specification": "String // 详细规格说明",
+        "overview": "String // 商品概述",
+        "is_promotion": "String // 是否促销（Y/N）",
+        "market_price": "BigDecimal // 市场价",
+        "promotion_price": "BigDecimal // 促销价",
+        "promote_start_date": "Long // 促销开始时间（时间戳，毫秒）",
+        "promote_end_date": "Long // 促销结束时间（时间戳，毫秒）",
+        "seckill_status": "Integer // 秒杀状态：0未秒杀, 1预热, 2进行中, 3已抢光, 4售罄",
+        "seckill_price": "BigDecimal // 秒杀价",
+        "seckill_start_time": "Long // 秒杀开始时间（时间戳，毫秒）",
+        "seckill_end_time": "Long // 秒杀结束时间（时间戳，毫秒）",
+        "unit_price": "BigDecimal // 单价",
+        "limit_quantity": "Integer // 限购数量",
+        "giftcard_price": "BigDecimal // 礼品卡价格",
+        "giftcard_status": "Integer // 礼品卡状态",
+        "giftcard_start_time": "Long // 礼品卡开始时间（时间戳，毫秒）",
+        "giftcard_end_time": "Long // 礼品卡结束时间（时间戳，毫秒）",
+        "member_status": "Integer // 会员价状态",
+        "member_start_time": "Long // 会员价开始时间（时间戳，毫秒）",
+        "member_end_time": "Long // 会员价结束时间（时间戳，毫秒）",
+        "member_price": "BigDecimal // 会员价（秒杀进行中时为null）",
+        "promotion_description": "String // 全国商品促销语",
+        "promotion_desc": "String // 促销语描述",
+        "rate": "BigDecimal // 评分",
+        "comment_count": "Integer // 评论数量",
+        "point_rate": "BigDecimal // 积分比例",
+        "brand_id": "Integer // 品牌ID",
+        "brand_name": "String // 品牌名称",
+        "brand_logo": "String // 品牌Logo",
+        "brand_item_count": "Integer // 品牌商品数量",
+        "category_id": "Integer // 分类ID",
+        "category_name": "String // 分类名称",
+        "category_slug": "String // 分类URL别名",
+        "category_pic_url": "String // 分类图片URL",
+        "parent_category_id": "Integer // 父分类ID",
+        "parent_category_name": "String // 父分类名称",
+        "parent_category_slug": "String // 父分类URL别名",
+        "parent_category_pic_url": "String // 父分类图片URL",
+        "grand_parent_category_id": "Integer // 祖父分类ID",
+        "grand_parent_category_name": "String // 祖父分类名称",
+        "grand_parent_category_slug": "String // 祖父分类URL别名",
+        "grand_parent_category_pic_url": "String // 祖父分类图片URL",
+        "is_gift": "Integer // 是否礼品",
+        "is_canada": "Integer // 是否加拿大",
+        "is_uk": "Integer // 是否英国",
+        "image_alt": "String // 图片alt文本",
+        "seller_id": "Integer // 卖家ID",
+        "seller_sn": "String // 卖家编号",
+        "seller_name": "String // 卖家名称",
+        "seller_logo": "String // 卖家Logo",
+        "seller_item_count": "Integer // 卖家商品数量",
+        "seller_shipping_list": [
+          {
+            "shipping_id": "Integer // 配送方式ID",
+            "shipping_name": "String // 配送方式名称",
+            "shipping_desc": "String // 配送方式描述",
+            "shipping_info": "String // 配送信息",
+            "shipping_fee": "BigDecimal // 配送费用",
+            "free_shipping_amount": "BigDecimal // 免邮金额",
+            "shipping_to": "Integer // 配送目标"
+          }
+        ],
+        "tags": [
+          {
+            "tag_id": "Integer // 标签ID",
+            "tag_name": "String // 标签名称",
+            "is_show": "Integer // 是否显示"
+          }
+        ],
+        "promotion_name": "String // 促销名称（来自mkt）",
+        "group": {
+          "propertyList": [
+            {
+              "property_id": "Integer // 属性ID",
+              "property_name": "String // 属性名称",
+              "property_name_eng": "String // 属性英文名称",
+              "property_type": "Integer // 属性类型",
+              "priority": "Integer // 优先级",
+              "property_value_list": [
+                {
+                  "property_value_id": "String // 属性值ID",
+                  "property_value_name": "String // 属性值名称",
+                  "property_value_name_eng": "String // 属性值英文名称",
+                  "icon_path": "String // 图标路径",
+                  "html_value": "String // HTML值",
+                  "color_icon": "String // 颜色图标"
+                }
+              ]
+            }
+          ],
+          "groupItemList": [
+            {
+              "item_number": "String // 商品编号",
+              "goods_id": "Integer // 商品ID",
+              "item_title": "String // 商品标题",
+              "seller_id": "Integer // 卖家ID",
+              "item_type": "Integer // 商品类型",
+              "is_district": "Integer // 是否区域限购",
+              "is_stock": "Integer // 是否有库存",
+              "is_canada": "Integer // 是否加拿大",
+              "is_on_sale": "Integer // 是否在售",
+              "is_primary": "Integer // 是否主商品",
+              "item_image": "String // 商品图片",
+              "is_promotion": "String // 是否促销",
+              "promote_start_date": "Long // 促销开始时间（时间戳，毫秒）",
+              "promote_end_date": "Long // 促销结束时间（时间戳，毫秒）",
+              "promotion_price": "BigDecimal // 促销价",
+              "seckill_price": "BigDecimal // 秒杀价",
+              "seckill_status": "Integer // 秒杀状态",
+              "seckill_start_time": "Long // 秒杀开始时间（时间戳，毫秒）",
+              "seckill_end_time": "Long // 秒杀结束时间（时间戳，毫秒）",
+              "member_status": "Integer // 会员价状态",
+              "member_price": "BigDecimal // 会员价",
+              "member_start_time": "Long // 会员价开始时间（时间戳，毫秒）",
+              "member_end_time": "Long // 会员价结束时间（时间戳，毫秒）",
+              "unit_price": "BigDecimal // 单价",
+              "market_price": "BigDecimal // 市场价",
+              "limit_quantity": "Integer // 限购数量",
+              "value_list": [
+                {
+                  "priority": "Integer // 优先级（用于排序）",
+                  "property_value": "String // 属性值"
+                }
+              ],
+              "property_values": "String // 属性值字符串",
+              "slug": "String // URL别名",
+              "specification": "Double // 规格",
+              "unit": "String // 单位",
+              "unit_cn": "String // 单位（中文）",
+              "unit_en": "String // 单位（英文）",
+              "clone_type": "Integer // 克隆类型",
+              "goods_number": "Integer // 库存数量",
+              "stock_warning": "Integer // 低库存提醒阈值",
+              "limitIds": "List<Integer> // 限购区域ID列表",
+              "bundle_num": "Integer // 捆绑数量",
+              "localPrice": [
+                {
+                  "item_number": "String // 商品编号",
+                  "rule_id": "Integer // 规则ID",
+                  "market_price": "BigDecimal // 市场价",
+                  "unit_price": "BigDecimal // 单价",
+                  "limit_quantity": "Integer // 限购数量",
+                  "is_promotion": "String // 是否促销",
+                  "promotion_price": "BigDecimal // 促销价",
+                  "promote_start_date": "Long // 促销开始时间（时间戳，毫秒）",
+                  "promote_end_date": "Long // 促销结束时间（时间戳，毫秒）",
+                  "seckill_status": "Integer // 秒杀状态",
+                  "seckill_price": "BigDecimal // 秒杀价",
+                  "seckill_start_time": "Long // 秒杀开始时间（时间戳，毫秒）",
+                  "seckill_end_time": "Long // 秒杀结束时间（时间戳，毫秒）",
+                  "giftcard_price": "BigDecimal // 礼品卡价格",
+                  "giftcard_status": "Integer // 礼品卡状态",
+                  "giftcard_start_time": "Long // 礼品卡开始时间（时间戳，毫秒）",
+                  "giftcard_end_time": "Long // 礼品卡结束时间（时间戳，毫秒）",
+                  "point_rate": "BigDecimal // 积分比例",
+                  "line_description": "String // 一行描述",
+                  "member_status": "Integer // 会员价状态",
+                  "member_start_time": "Long // 会员价开始时间（时间戳，毫秒）",
+                  "member_end_time": "Long // 会员价结束时间（时间戳，毫秒）",
+                  "member_price": "BigDecimal // 会员价",
+                  "local_mkt_ps_id": "Integer // 本地营销活动ID"
+                }
+              ],
+              "badge_list": [
+                {
+                  "badge_name": "String // Badge名称",
+                  "font_color": "String // 字体颜色",
+                  "background_color": "String // 背景颜色",
+                  "badge_icon": "String // icon地址",
+                  "icon_scale": "String // icon高宽比",
+                  "guide_desc": "String // badge提示文案（hover文案）",
+                  "extMap": "Map<String,Object> // 附加信息，参与逻辑计算，不返回前台"
+                }
+              ],
+              "status": "String // 商品状态",
+              "is_limit_area": "Boolean // 是否限购区域",
+              "is_instock": "Integer // 是否有库存",
+              "act_type": "Integer // 活动类型：0普通, 1下架, 2缺货, 3区域限购"
+            }
+          ],
+          "groupABValue": "ABStatusEnum // 商品组AB测试值（枚举值：running-运行中, stop-停止, V0-V5-版本号, Vh-holdout版本）",
+          "vipTipInfo": [
+            {
+                "delta_amount": "Integer // 面额（普通礼卡商品组商品时返回）",
+                "icon": "String // 会员图标",
+                "level_id": "Integer // 等级ID（1,2,3）",
+                "level_name": "String // 等级名称",
+                "tips": "String // 提示信息，例：购买面额$200礼卡及以上升至${icon}"
+            }
+          ],
+          "groupConfig": {
+            "itemConfig": {
+              "flavorBgColor": "String // 浮层背景色",
+              "flavorTime": "Integer // 浮层时间（毫秒）",
+              "foldSwitch": "Integer // 折叠开关：0关闭 1开启",
+              "foldThreshold": "Integer // 超过多少个不可用才折叠",
+              "foldTip": "String // 折叠提示文案"
+            },
+            "propertyConfig": {
+              "flavorBgColor": "String // 浮层背景色",
+              "flavorTime": "Integer // 浮层时间（毫秒）",
+              "foldSwitch": "Integer // 折叠开关：0关闭 1开启",
+              "foldThreshold": "Integer // 超过多少个不可用才折叠",
+              "foldTip": "String // 折叠提示文案"
+            }
+          }
+        },
+        "group_id": "Integer // 商品组ID",
+        "expectedTime": {
+          "exddTime": "Long // 预计送达时间（时间戳，毫秒）",
+          "bufferTime": "Long // 缓冲时间（时间戳，毫秒）",
+          "cutoffTime": "Long // 截止时间（时间戳，毫秒）",
+          "is_support_self_shipping": "Integer // 是否支持自提"
+        },
+        "declare_progress": "String // 集运发货方式",
+        "specification": "Double // 规格（默认1.0）",
+        "bundle_num": "Integer // 捆绑数量",
+        "unit": "String // 单位",
+        "unit_cn": "String // 单位（中文，默认'件'）",
+        "unit_en": "String // 单位（英文，默认'piece'）",
+        "clone_type": "Integer // 克隆类型",
+        "paypal": "Integer // 是否支持PayPal支付（0否，1是）",
+        "limitIds": "List<Integer> // 限购区域ID列表",
+        "localPrice": [
+          {
+            "item_number": "String // 商品编号",
+            "rule_id": "Integer // 规则ID",
+            "market_price": "BigDecimal // 市场价",
+            "unit_price": "BigDecimal // 单价",
+            "limit_quantity": "Integer // 限购数量",
+            "is_promotion": "String // 是否促销",
+            "promotion_price": "BigDecimal // 促销价",
+            "promote_start_date": "Long // 促销开始时间（时间戳，毫秒）",
+            "promote_end_date": "Long // 促销结束时间（时间戳，毫秒）",
+            "seckill_status": "Integer // 秒杀状态",
+            "seckill_price": "BigDecimal // 秒杀价",
+            "seckill_start_time": "Long // 秒杀开始时间（时间戳，毫秒）",
+            "seckill_end_time": "Long // 秒杀结束时间（时间戳，毫秒）",
+            "giftcard_price": "BigDecimal // 礼品卡价格",
+            "giftcard_status": "Integer // 礼品卡状态",
+            "giftcard_start_time": "Long // 礼品卡开始时间（时间戳，毫秒）",
+            "giftcard_end_time": "Long // 礼品卡结束时间（时间戳，毫秒）",
+            "point_rate": "BigDecimal // 积分比例",
+            "line_description": "String // 一行描述",
+            "member_status": "Integer // 会员价状态",
+            "member_start_time": "Long // 会员价开始时间（时间戳，毫秒）",
+            "member_end_time": "Long // 会员价结束时间（时间戳，毫秒）",
+            "member_price": "BigDecimal // 会员价",
+            "local_mkt_ps_id": "Integer // 本地营销活动ID"
+          }
+        ],
+        "videoAndImageList": [
+          {
+            "type": "Integer // 类型（1-图片, 其他-视频）",
+            "title_page_url": "String // 封面图URL",
+            "transcode_url": "String // 转码后的视频/图片URL"
+          }
+        ],
+        "itemImageList": [
+          {
+            "item_number": "String // 商品编号",
+            "image_name": "String // 图片名称",
+            "style_type": "Integer // 样式类型",
+            "priority": "Integer // 优先级",
+            "is_primary": "String // 是否主图"
+          }
+        ],
+        "primary_image": "String // 主图",
+        "isShareInventory": "Integer // 是否共享库存：1是, 0否",
+        "ranking_info": {
+          "color": "String // 颜色",
+          "background_color": "String // 背景颜色",
+          "rank": "String // 排名",
+          "rank_name": "String // 排名名称",
+          "rank_type": "String // 排名类型",
+          "category_name": "String // 分类名称",
+          "category_id": "String // 分类ID",
+          "rankId": "String // 排名ID",
+          "seller_id": "Integer // 卖家ID",
+          "seller_sn": "String // 卖家编号",
+          "link": "String // 链接"
+        },
+        "sameDayDeliveryInfo": {
+          "delivery_info": "String // 配送信息",
+          "backgroud_color": "String // 背景颜色",
+          "font_color": "String // 字体颜色",
+          "count_down_dtm": "Integer // 倒计时时间戳"
+        },
+        "original_id": "String // 原始商品ID",
+        "original_slug": "String // 原始商品URL别名",
+        "is_limit_area": "Boolean // 是否限购区域",
+        "price_style": {
+          "title": "String // 标题",
+          "font_color": "String // 字体颜色",
+          "icon": "String // 图标",
+          "icon_scale": "Double // 图标缩放比例",
+          "background_color": "String // 背景颜色",
+          "background_img": "String // 背景图片",
+          "link_url": "String // 链接URL",
+          "line_desc": "String // 描述标语",
+          "promotion_desc": "String // 促销语"
+        },
+        "itemNumberActList": [
+          {
+            "type": "Integer // 类型（1-category_id, 2-item_number）",
+            "key": "String // 三级分类category_id 或者 item_number",
+            "titleZh": "String // 中文内容",
+            "titleEn": "String // 多语言英文内容",
+            "url": "String // 链接地址（全路径）",
+            "state": "String // 生效的州",
+            "priority": "Integer // 展示优先级"
+          }
+        ],
+        "categoryActList": [
+          {
+            "type": "Integer // 类型（1-category_id, 2-item_number）",
+            "key": "String // 三级分类category_id 或者 item_number",
+            "titleZh": "String // 中文内容",
+            "titleEn": "String // 多语言英文内容",
+            "url": "String // 链接地址（全路径）",
+            "state": "String // 生效的州",
+            "priority": "Integer // 展示优先级"
+          }
+        ],
+        "itemActVOList": [
+          {
+            "title": "String // 标题（根据语言返回titleZh或titleEn）",
+            "url": "String // 链接地址"
+          }
+        ],
+        "purchaseAvatorList": "List<String> // 已购买头像列表",
+        "purchaseCount": "Integer // 已购买人数",
+        "mkt_ps_id": "Integer // 正在生效的活动ID",
+        "nfImageList": "List<String> // 营养成分图片信息列表",
+        "oneDesc": "String // 商品一句话描述",
+        "shelf_life": "Integer // 预售商品保质期（年货节预售信息）",
+        "estimated_arrival_start": "Long // 预计到货时间开始（年货节预售信息，时间戳，毫秒）",
+        "estimated_arrival_end": "Long // 预计到货时间结束（年货节预售信息，时间戳，毫秒）",
+        "oneDescColor": "String // 一句话描述颜色",
+        "status": "String // 商品状态（A-上架，R-回收站等）",
+        "is_instock": "Integer // 是否有库存",
+        "act_type": "Integer // 活动类型：0普通, 1下架, 2缺货, 3区域限购"
+      },
+      "brand": "List // 品牌列表（通常为空列表[]）",
+      "sellerInfo": {
+        "seller_id": "Integer // 卖家ID",
+        "seller_sn": "String // 卖家编号",
+        "vendor_sn": "String // 卖家新标识",
+        "seller_name": "String // 卖家名称",
+        "logo": "String // 卖家Logo",
+        "logo_color": "String // 卖家Logo颜色",
+        "item_count": "Integer // 所售商品总数",
+        "join_time": "Long // 入驻时间（时间戳，毫秒）",
+        "deposit": "BigDecimal // 保证金",
+        "multiple_rate": "Double // 综合评分",
+        "shopping_rate": "Double // 购物体验评分",
+        "items_rate": "Double // 商品评分",
+        "avg_shopping_rate": "Double // 购物体验平均分",
+        "avg_items_rate": "Double // 商品平均分",
+        "avg_multiple_rate": "BigDecimal // 综合平均分（计算字段：(avg_shopping_rate + avg_items_rate) / 2）",
+        "services": [
+          {
+            "service_id": "Integer // 服务ID（-1表示免运费服务）",
+            "service_name": "String // 服务名称",
+            "priority": "Integer // 优先级"
+          }
+        ],
+        "shippings": [
+          {
+            "shipping_id": "Integer // 配送方式ID",
+            "shipping_name": "String // 配送方式名称",
+            "shipping_fee": "BigDecimal // 配送费用",
+            "free_shipping_amount": "BigDecimal // 免邮金额",
+            "is_primary": "Integer // 是否主要配送方式",
+            "zipcode": "String // 邮编",
+            "zipcode_limit_id": "Integer // 邮编限购ID",
+            "shipping_type": "Integer // 配送类型",
+            "shipping_desc": "String // 配送描述",
+            "shipping_info": "String // 配送信息",
+            "shipping_to": "Integer // 配送目标"
+          }
+        ],
+        "free_shipping_amount": "BigDecimal // 免邮金额（business_type=5时会设置）",
+        "shipping_fee": "BigDecimal // 邮费",
+        "shipping_info": "String // 邮费信息（business_type=5时会设置免运费文案）",
+        "return_policy": "String // 退换货规则",
+        "delivery": "String // 邮寄规则",
+        "quality": "String // 正品保证",
+        "points": "String // 积分规则",
+        "bannerInfo": [
+          {
+            "loc_id": "Integer // 位置ID",
+            "loc_name": "String // 位置名称",
+            "title": "String // Banner标题",
+            "aim_url": "String // Banner跳转链接",
+            "media_type": "Integer // 媒介类型：1 image、2 html、3 code、4 video、5 text、6 link",
+            "image_url": "String // 图片地址",
+            "media_content": "String // code,text,html的内容",
+            "start_time": "Integer // 开始时间（时间戳，秒）",
+            "end_time": "Integer // 结束时间（时间戳，秒）",
+            "app_aim_Url": "String // APP端使用该跳转链接",
+            "background_color": "String // Banner背景颜色",
+            "sort": "String // Banner顺序"
+          }
+        ],
+        "ship_type": "Integer // 配送类型",
+        "declare_progress": "String // 集运发货方式",
+        "slug": "String // URL别名",
+        "seller_coupon": [
+          {
+            "ps_code": "String // 优惠券计划码",
+            "ps_id": "Integer // 优惠券计划ID",
+            "coupon_code": "String // 优惠券码",
+            "coupon_form": "Integer // 优惠券类型：1-平台券, 2-推广券, 3-免邮券",
+            "coupon_type": "Integer // 优惠券优惠类型：1-折扣, 2-满减, 3-现金券",
+            "status": "Integer // 状态：10-可领取, 20-已领取, 30-已使用, 40-已领完（活动页使用）",
+            "coupon_name": "String // 优惠券规则描述（中文）",
+            "coupon_ename": "String // 优惠券规则描述（英文）",
+            "coupon_name_new": "String // 优惠券规则描述（新）",
+            "use_url": "String // 去使用页链接",
+            "coupon_name_sub": "String // 优惠券规则描述简写（用于单品页，中文）",
+            "coupon_ename_sub": "String // 优惠券规则描述简写（用于单品页，英文）",
+            "percent": "BigDecimal // 折扣率（20即20%off）",
+            "max_discount": "BigDecimal // 最大抵扣金额",
+            "buy_amount": "BigDecimal // 满金额",
+            "reduce_amount": "BigDecimal // 减金额",
+            "cash_amount": "BigDecimal // 现金券金额",
+            "platform": "Integer // 平台使用限制：0-ALL, 1-APP, 2-MOB, 3-DKP",
+            "is_relate": "Boolean // 是否相对使用时间",
+            "relative_use_time": "Integer // 相对使用时间段（秒）",
+            "use_start_time": "Long // 优惠券使用开始时间（时间戳，毫秒）",
+            "use_end_time": "Long // 优惠券使用结束时间（时间戳，毫秒）",
+            "use_time_desc": "String // 使用时间文案（中文）",
+            "use_time_desc_en": "String // 使用时间文案（英文）",
+            "use_time_desc_ko": "String // 使用时间文案（韩文）",
+            "use_time_desc_ja": "String // 使用时间文案（日文）",
+            "use_time_desc_zht": "String // 使用时间文案（繁体中文）",
+            "coupon_desc_cn": "String // 优惠券范围描述（中文）",
+            "coupon_desc_en": "String // 优惠券范围描述（英文）",
+            "coupon_desc_ko": "String // 优惠券范围描述（韩文）",
+            "coupon_desc_ja": "String // 优惠券范围描述（日文）",
+            "coupon_desc_zht": "String // 优惠券范围描述（繁体中文）",
+            "coupon_tag_name": "String // 优惠券标签（中文）",
+            "coupon_tag_name_en": "String // 优惠券标签（英文）",
+            "seller_id": "Integer // 商家ID",
+            "seller_sn": "String // 商家编号",
+            "seller_name": "String // 商家名称（中文）",
+            "seller_ename": "String // 商家名称（英文）",
+            "multi_seller": "Boolean // 是否跨商家：false-否, true-是",
+            "coupon_shipping_type": "Integer // 免邮券免邮类型：1-全免, 2-限额免（reduce_amount/buy_amount）",
+            "business_types": "Set<Integer> // 业务类型集合（group_type对应业务类型）",
+            "group_type": "Integer // 业务类型分组：1-亚米物流(包含亚米自营、代销、FBY), 3-商家直邮, 4-集运, 6-预售",
+            "shipping_id": "Integer // 免邮券物流ID",
+            "shipping_name": "String // 物流名称",
+            "is_gain": "Boolean // 是否已领：false-未领, true-已领",
+            "source_bu": "Integer // 优惠券业务来源：0-mkt, 1-fo",
+            "item_list": "List<String> // 优惠券包含的商品集合",
+            "desc_points": "List<String> // 优惠券描述点集合",
+            "coupon_items": "List<ResultItem> // 优惠券可用商品集合（从search中获取，积分兑换字段）",
+            "remain_qty": "Integer // 剩余数量",
+            "error_desc_cn": "String // 错误描述（中文）",
+            "error_desc_en": "String // 错误描述（英文）",
+            "code_type": "Integer // 优惠券码类型：1-全场, 2-分类, 3-品牌, 4-单品"
+          }
+        ],
+        "expectedTime": {
+          "exddTime": "Long // 预计送达时间（时间戳，毫秒）",
+          "bufferTime": "Long // 缓冲时间（时间戳，毫秒）",
+          "cutoffTime": "Long // 截止时间（时间戳，毫秒）",
+          "is_support_self_shipping": "Integer // 是否支持自提"
+        },
+        "seller_tier_badge": {
+          "icon": "String // icon图标",
+          "text": "String // 文字",
+          "text_color": "String // 文字颜色",
+          "top_bg_color": "String // 背景色顶部（渐变色需要两个参数）",
+          "bottom_bg_color": "String // 背景色底部（渐变色需要两个参数）"
+        },
+        "actual_business": "Integer // 商家类型：-1商家没有上架过商品, 0商家同时在卖fby和直邮商品, 1商家只在卖直邮商品, 2商家只在卖fby商品"
+      },
+      "brandInfo": {
+        "brand_id": "Integer // 品牌ID",
+        "brand_name": "String // 品牌名称",
+        "logo": "String // 品牌Logo",
+        "index": "String // 首字母",
+        "origin_country": "String // 品牌产地",
+        "logo_color": "String // 品牌Logo颜色",
+        "bannerInfo": "List<BannerInfoResponse> // Banner信息列表（参考sellerInfo.bannerInfo字段说明）",
+        "item_count": "Integer // 所售商品总数",
+        "slug": "String // URL别名",
+        "desc": "String // 品牌描述"
+      },
+      "gift_list": [
+        {
+          "ps_id": "Integer // 活动ID",
+          "ps_desc": "String // 活动描述（中文）",
+          "ps_desc_en": "String // 活动描述（英文）",
+          "type": "Short // 活动类型：1.满赠, 2.买赠, 3.满减, 4.折扣",
+          "overlap": "Short // 是否叠加：0不叠加, 1叠加",
+          "nums": "Integer // 总共赠送赠品个数",
+          "giftInfos": [
+            {
+              "goods_id": "Integer // 商品ID",
+              "item_number": "String // 商品编号",
+              "gift_count": "Integer // 赠品数量",
+              "goods_name": "String // 商品名称",
+              "goods_image_uri": "String // 商品图片URI",
+              "overlap_desc": "String // 叠加描述（中文）",
+              "overlap_desc_en": "String // 叠加描述（英文）",
+              "brand_id": "Integer // 品牌ID",
+              "brand_name": "String // 品牌名称",
+              "brand_name_eng": "String // 品牌英文名称",
+              "inStock": "Boolean // 是否有货",
+              "gift_all_desc": "String // 赠品完整描述（中文）",
+              "gift_all_desc_en": "String // 赠品完整描述（英文）"
+            }
+          ]
+        }
+      ],
+      "itemDescList": [
+        {
+          "property_name": "String // 属性名称",
+          "property_value": "String // 属性值",
+          "type": "Integer // 类型：1-独立属性, 2-商品描述, 3-商品属性, 4-FDA免责声明, 5-免责声明",
+          "priority": "Integer // 优先级"
+        }
+      ],
+      "essayList": "JSONArray // 文章列表（来自SNS服务，可选）",
+      "recommend_tab_list": "JSONArray // 推荐标签列表（仅匿名用户且need_tabs=1时返回，PC端根据此字段有无判断调用数据源，可选）",
+      "group": "Group对象 // 商品组信息（如果商品属于商品组，参考itemInfo.group字段说明，可选）",
+      "seckill_info": {
+        "item_number": "String // 商品编号",
+        "ps_id": "Integer // 促销活动ID",
+        "status": "Integer // 秒杀状态：0未秒杀, 1预热, 2进行中, 3已抢光有未支付订单, 4售罄(结束)",
+        "seckill_price": "BigDecimal // 秒杀价",
+        "seckill_total_qty": "Integer // 秒杀库存",
+        "seckill_left_qty": "Integer // 剩余库存",
+        "start_time": "Long // 开始时间（时间戳，毫秒）",
+        "end_time": "Long // 结束时间（时间戳，毫秒）",
+        "count_down": "Long // 倒计时时间段（时间戳，毫秒）",
+        "seckill_desc_cn": "String // 秒杀文案（中文）",
+        "seckill_desc_en": "String // 秒杀文案（英文）",
+        "rulePrices": [
+          {
+            "rule_id": "Integer // 区域ID",
+            "seckill_price": "BigDecimal // 区域秒杀价",
+            "limit_quantity": "Integer // 每单限购数量"
+          }
+        ]
+      },
+      "same_day_delivery": {
+        "delivery_info": "String // 配送信息",
+        "backgroud_color": "String // 背景颜色",
+        "font_color": "String // 字体颜色",
+        "count_down_dtm": "Integer // 倒计时时间戳"
+      },
+      "collection_page": [
+        {
+          "name": "String // 收藏页名称",
+          "slug": "String // 收藏页URL别名"
+        }
+      ],
+      "google_seo": "String // Google SEO信息（JSON字符串，仅PC端返回，可选）",
+      "vipTipInfo": {
+        "delta_amount": "Integer // 面额（普通礼卡商品组商品时返回）",
+        "icon": "String // 会员图标",
+        "level_id": "Integer // 等级ID（1,2,3）",
+        "level_name": "String // 等级名称",
+        "tips": "String // 提示信息，例：购买面额$200礼卡及以上升至${icon}"
+      },
+      "config": {
+        "nb_seller_service": "String // NB卖家服务配置",
+        "self_sale_tip": "String // 自营提示配置",
+        "fby_shipping_desc": "String // FBY配送描述配置",
+        "yamiSelect_detail": "String // YamiSelect详情配置",
+        "nb_seo_new": "String // NB SEO新配置（JSON字符串，包含item_detail对象，可能包含item_detail_special_{item_number}的特殊配置）",
+        "paypal_client_id": "String // PayPal客户端ID",
+        "seller_service_desc": "String // 卖家服务描述配置",
+        "nutrition_facts_desc": "String // 营养成分描述配置"
+      },
+      "currency": "String // 货币符号（Canada为'US $'，其他为'$'，必填）",
+      "注意事项": [
+        "1. 当itemInfo为null时，brand返回空列表[]，sellerInfo和brandInfo返回null",
+        "2. 秒杀进行中时（seckill_status=2），member_price会被设置为null",
+        "3. collection_page和google_seo字段仅在PC端（y_platform=pc）时返回",
+        "4. recommend_tab_list仅在匿名用户且need_tabs=1时返回",
+        "5. vipTipInfo仅在礼卡商品（item_type为礼品卡类型）且用户已登录时返回",
+        "6. group字段仅在商品属于商品组时返回",
+        "7. seckill_info字段仅在商品有秒杀活动时返回",
+        "8. essayList来自SNS服务，可能为空",
+        "9. 所有时间戳字段单位为毫秒（Long类型）或秒（Integer类型），具体以字段说明为准",
+        "10. 价格字段类型为BigDecimal，前端需要格式化显示",
+        "11. 部分字段可能为null，前端需要做空值判断"
+      ]
+    }
+  }
+  
