@@ -6,7 +6,7 @@
 
 **当前支持的组件：**
 - ✅ 秒杀组件（Seckill Component）
-- 🚧 后续可能支持其他组件类型
+- ✅ 动态商品列表组件（Dynamic Item List Component）
 
 ---
 
@@ -179,3 +179,97 @@
 | group_num | Integer | 商品组商品数量 |
 | bundle | String | Bundle商品单价描述 |
 | bundle_info | BundleVO | Bundle商品价格详情 |
+
+---
+
+### 2. 动态商品列表组件（Dynamic Item List Component）
+
+#### 组件说明
+
+动态商品列表组件支持分类Tab配置。前端通过 `tabId` 指定分类Tab（`0` 表示“全部”），服务端基于动态数据源返回该Tab下的商品列表。
+
+#### 动态商品组件参数说明
+
+| 参数 | 类型 | 必填 | 说明 | 示例 |
+|------|------|------|------|------|
+| cfId | Integer | 是 | 动态商品组件的配置ID | `12345` |
+| subTabId | Integer | 否 | 动态商品组件不使用该参数，传 `null` 或不传 | `null` |
+| tabId | Integer | 是 | 分类Tab ID<br>- `0`：全部分类<br>- 其他：具体分类ID（匹配 L1/L2/L3 分类） | `0`、`456` |
+
+#### 动态商品组件返回值结构
+
+**data 字段结构（DynamicItemTabResponse）：**
+
+```json
+{
+  "item_info": [
+    {
+      "tab_text": "全部",
+      "tab_value": 0,
+      "item_count": 12,
+      "items": [
+        {
+          "goods_id": 100001,
+          "item_number": "1016028821",
+          "item_title": "商品名称",
+          "item_image": "https://cdn.example.com/image.jpg",
+          "slug": "product-slug",
+          "item_type": "new",
+          "business_type": "yamibuy",
+          "price": {
+            "market_price": "$29.99",
+            "current_price": "$19.99",
+            "discount_rate": "33%"
+          },
+          "brand_id": 123,
+          "brand_name": "品牌名称",
+          "brand_slug": "brand-slug",
+          "comment": {
+            "score": 4.8,
+            "count": 256
+          },
+          "badge_list": [
+            {
+              "type": "hot",
+              "text": "热卖"
+            }
+          ],
+          "tracking_data": {
+            "position": 1,
+            "component_id": 12345
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+**字段说明：**
+
+| 字段名 | 类型 | 说明 |
+|--------|------|------|
+| item_info | Array&lt;TabSetting&gt; | Tab结果列表 |
+| item_info.tab_text | String | Tab名称 |
+| item_info.tab_value | Integer | Tab分类ID |
+| item_info.item_count | Integer | 该Tab下商品数量 |
+| item_info.items | Array&lt;ItemVO&gt; | 商品列表（详见商品对象说明） |
+
+**商品对象（ItemVO）主要字段：**
+
+| 字段名 | 类型 | 说明 |
+|--------|------|------|
+| goods_id | Integer | 商品ID |
+| item_number | String | 商品编号（SKU） |
+| item_title | String | 商品标题（根据语言返回） |
+| item_image | String | 商品主图URL |
+| slug | String | 商品URL slug |
+| item_type | String | 商品类型：`new`-新品/`clearance`-清仓/`preorder`-预售等 |
+| business_type | String | 业务类型：`yamibuy`-自营/`third_vendor`-第三方等 |
+| price | PriceVO | 价格信息对象 |
+| brand_id | Integer | 品牌ID |
+| brand_name | String | 品牌名称（根据语言返回） |
+| brand_slug | String | 品牌URL slug |
+| comment | CommentVO | 评论信息（评分>4.5时返回） |
+| badge_list | Array&lt;BadgeVO&gt; | 商品Badge列表 |
+| tracking_data | TrackingData | 埋点数据 |
