@@ -22,7 +22,7 @@
 |--------|------|------|
 | token | 是 | 用户登录 token |
 | y_platform | 是 | `android` 或 `ios` |
-| y_language | 是 | 语言：`zh_CN` / `en_US` / `ja_JP` / `ko_KR` / `zh_TW` / `fr_FR` |
+| y_language | 是 | 语言：`zh_CN` / `en_US` / `ja` / `ko` / `zht` / `fr` |
 | site_code | 是 | 固定传 `ca`（加拿大站必须传） |
 | device_id | 是 | 设备 ID |
 | ym_id | 是 | 用户匿名 ID |
