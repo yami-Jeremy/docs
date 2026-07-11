@@ -32,10 +32,7 @@
 
 | 参数 | 必填 | 说明 |
 |------|------|------|
-| page | 是 | 分页页码，必须 >0。活动专区只有 1 页，固定传 `1` |
-| excluded_items | 否 | 翻页时传。上一页返回的 `page.excluded_items` 值，用于跨页商品去重。第 1 页不传 |
-| excluded_groups | 否 | 翻页时传。上一页返回的 `page.excluded_groups` 值，用于跨页商品组去重。第 1 页不传 |
-| last_component_id | 否 | 翻页时可传。上一页最后一个组件的 component_config_id，用于精确定位分页起始位置 |
+| page | 是 | 固定传 `1`（活动专区只有 1 个组件，不涉及分页） |
 
 > **重要：** `site_code: ca` 必须传，否则后端无法路由到加拿大页面，接口会返回 null。`page` 必传且 >0，不传会返回 null。
 
