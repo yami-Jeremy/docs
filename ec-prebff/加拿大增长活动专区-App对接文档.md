@@ -26,8 +26,18 @@
 | site_code | 是 | 固定传 `ca`（加拿大站必须传） |
 | device_id | 是 | 设备 ID |
 | ym_id | 是 | 用户匿名 ID |
+| y_version | 是 | App 版本号（Android 如 252，iOS 如 20260108），影响部分组件是否返回 |
 
-> **重要：** `site_code: ca` 必须传，否则后端无法路由到加拿大页面，接口会返回 null。
+### 请求 Query 参数
+
+| 参数 | 必填 | 说明 |
+|------|------|------|
+| page | 是 | 分页页码，必须 >0。活动专区只有 1 页，固定传 `1` |
+| excluded_items | 否 | 翻页时传。上一页返回的 `page.excluded_items` 值，用于跨页商品去重。第 1 页不传 |
+| excluded_groups | 否 | 翻页时传。上一页返回的 `page.excluded_groups` 值，用于跨页商品组去重。第 1 页不传 |
+| last_component_id | 否 | 翻页时可传。上一页最后一个组件的 component_config_id，用于精确定位分页起始位置 |
+
+> **重要：** `site_code: ca` 必须传，否则后端无法路由到加拿大页面，接口会返回 null。`page` 必传且 >0，不传会返回 null。
 
 ## 3. 请求示例
 
@@ -37,6 +47,7 @@ curl -X GET \
   -H "token: {用户token}" \
   -H "y_platform: android" \
   -H "y_language: en_US" \
+  -H "y_version: 252" \
   -H "site_code: ca" \
   -H "device_id: {设备ID}" \
   -H "ym_id: {匿名ID}"
