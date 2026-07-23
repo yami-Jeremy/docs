@@ -1,10 +1,10 @@
-# 加拿大增长活动专区 - App 对接文档
+# 加拿大增长活动专区 - 接口对接文档
 
 > OP-37234 · 加拿大站第三个 Tabbar → 活动专区页面
 
 ## 1. 功能说明
 
-加拿大站 App 底部第三个 tabbar 入口改为「活动专区」，页面展示竖屏平铺的 Banner 列表（从上到下排列），点击跳转到对应活动页面。
+加拿大站 App/H5 底部第三个 tabbar 入口改为「活动专区」，页面展示竖屏平铺的 Banner 列表（从上到下排列），点击跳转到对应活动页面。
 
 > **渲染方式：** 不使用首页的横屏轮播，改为竖屏平铺（从上到下排列所有 Banner 图片），每条 Banner 可点击跳转。
 
@@ -13,20 +13,21 @@
 | 项目 | 说明 |
 |------|------|
 | 接口 | `GET /ec-prebff/pages/cms/canada_growth?page=1` |
+| GQC 环境 | `https://gqc-ecapi.yamibuy.tech` |
 | DEV 环境 | `https://dev-ecapi.yamibuy.tech` |
-| 触发条件 | 加拿大站 App 第三个 tabbar 点击时调用 |
+| 触发条件 | 加拿大站 App/H5 第三个 tabbar 点击时调用 |
 
 ### 请求 Headers
 
 | Header | 必填 | 说明 |
 |--------|------|------|
 | token | 是 | 用户登录 token |
-| y_platform | 是 | `android` 或 `ios` |
-| y_language | 是 | 语言：`zh_CN` / `en_US` / `ja` / `ko` / `zht` / `fr` |
+| y_platform | 是 | App: `android` / `ios`；H5: `h5` |
+| y_language | 是 | 语言：`zh_CN` / `en_US` / `ja_JP` / `ko_KR` / `zh_TW` / `fr_FR` |
 | site_code | 是 | 固定传 `ca`（加拿大站必须传） |
 | device_id | 是 | 设备 ID |
-| ym_id | 是 | 用户匿名 ID |
-| y_version | 是 | App 版本号（Android 如 252，iOS 如 20260108），影响部分组件是否返回 |
+| ym_id | 否 | 用户匿名 ID |
+| y_version | 否 | App 版本号（H5 不传） |
 
 ### 请求 Query 参数
 
@@ -38,16 +39,28 @@
 
 ## 3. 请求示例
 
+### App 端
 ```bash
 curl -X GET \
-  "https://dev-ecapi.yamibuy.tech/ec-prebff/pages/cms/canada_growth?page=1" \
+  "https://gqc-ecapi.yamibuy.tech/ec-prebff/pages/cms/canada_growth?page=1" \
   -H "token: {用户token}" \
   -H "y_platform: android" \
   -H "y_language: en_US" \
-  -H "y_version: 252" \
+  -H "y_version: 276" \
   -H "site_code: ca" \
   -H "device_id: {设备ID}" \
   -H "ym_id: {匿名ID}"
+```
+
+### H5 端
+```bash
+curl -X GET \
+  "https://gqc-ecapi.yamibuy.tech/ec-prebff/pages/cms/canada_growth?page=1" \
+  -H "token: {用户token}" \
+  -H "y_platform: h5" \
+  -H "y_language: en_US" \
+  -H "site_code: ca" \
+  -H "device_id: {设备ID}"
 ```
 
 ## 4. 返回数据结构
@@ -59,9 +72,9 @@ curl -X GET \
   "body": {
     "components": [
       {
-        "component_key": "cms_component_slide",
-        "component_file": "cms_component_slide",
-        "component_config_id": 1742645,
+        "component_key": "cms_component_slide_vertical",
+        "component_file": "cms_component_slide_vertical",
+        "component_config_id": 517760,
         "component_priority": 1,
         "properties": {
           "title": "Growth Zone",
@@ -122,7 +135,8 @@ curl -X GET \
 
 | 字段 | 类型 | 说明 |
 |------|------|------|
-| component_key | String | 固定 `cms_component_slide` |
+| component_key | String | 固定 `cms_component_slide_vertical` |
+| component_file | String | 固定 `cms_component_slide_vertical`（前端用此字段匹配渲染组件） |
 | properties.title | String | 组件标题（可选展示） |
 | dataObjectResult | Array | Banner 列表，按 sort 排序 |
 
@@ -131,8 +145,8 @@ curl -X GET \
 | 字段 | 类型 | 说明 |
 |------|------|------|
 | obj_id | Integer | Banner 唯一 ID |
-| aimUrl | String | 跳转链接（H5） |
-| appAimUrl | String | App 跳转链接（优先使用此字段） |
+| aimUrl | String | 跳转链接（H5 使用） |
+| appAimUrl | String | App 跳转链接（App 优先使用此字段） |
 | imageUrl | String | Banner 图片地址 |
 | imageUrl2 | String | 备用图片地址（可用于高分屏） |
 | imgScale | Double | 图片高宽比（可用于占位计算） |
@@ -141,9 +155,11 @@ curl -X GET \
 | end_time | Long | 生效结束时间（Unix 秒） |
 | visibility_settings | Integer | 可见性：0=所有用户，1=新用户，2=老用户 |
 | is_sticky | Integer | 是否置顶：0=否，1=是 |
-| has_item | Integer | 是否有关联商品：0=否，1=是 |
+| has_item | Integer | 是否有关联商品：0=否，1=是（本页面始终为 0） |
 
-## 6. App 端实现要求
+## 6. 前端实现要求
+
+### App 端
 
 - 加拿大站第三个 tabbar 点击时调用上述接口
 - 从返回的 `components[0].dataObjectResult` 取 Banner 列表
@@ -153,10 +169,13 @@ curl -X GET \
 - 可用 `imgScale` 计算图片占位高度（高度 = 宽度 × imgScale）
 - Banner 数量不固定（运营配几条展示几条），做好列表滚动
 
-> **与首页 Banner 的区别：**
-> - 首页 Banner 是横屏轮播（自动翻页），本页是竖屏平铺（全部展示）
-> - 首页有 `interval_time` 控制轮播间隔，本页不需要
-> - 组件 key 相同（都是 `cms_component_slide`），数据结构相同，只是渲染方式不同
+### H5 端
+
+- 通过 `component_file` 字段匹配渲染组件：`cms_component_slide_vertical` → 竖屏平铺组件
+- 新建 `cms-component-slide-vertical.vue` 实现竖屏平铺布局
+- 数据结构和 App 端完全一致，取 `dataObjectResult` 渲染 Banner 列表
+- 每条 Banner 点击跳转到 `aimUrl`
+- 后续如有新组件加入该页面，会以新的 `component_file` 返回，H5 用通用组件加载机制自动适配
 
 ## 7. 注意事项
 
@@ -164,4 +183,5 @@ curl -X GET \
 - 接口和首页用的是同一个 `/pages/cms/{pageKey}`，只是 pageKey 不同
 - 当 Banner 列表为空时，展示空态页面
 - 支持下拉刷新（重新调接口）
-- 目前 DEV 环境已可联调
+- `component_key` 为 `cms_component_slide_vertical`（非 `cms_component_slide`），区别于首页横向轮播 Banner
+- 各环境均已可联调（GQC/DEV）
